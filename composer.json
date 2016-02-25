@@ -1,0 +1,14 @@
+{
+  "name": "locomotivemtl/wp-polylang-translate-rewrite-slugs",
+  "description": "Fork of KLicheR/wp-polylang-translate-rewrite-slugs repo for composer usage",
+  "type": "wordpress-muplugin",
+  "license": "GPL-3.0",
+  "minimum-stability": "dev",
+  "require": {
+    "php": ">=5.4",
+    "composer/installers": "~1.0"
+  },
+  "extra": {
+    "installer-name": "wp-polylang-translate-rewrite-slugs"
+  }
+}
