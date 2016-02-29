@@ -12,7 +12,7 @@ License: GPLv2 or later
 /*  Copyright 2013  Kristoffer Laurin-Racicot  (email : kristoffer.lr@gmail.com)
 
 	This program is free software; you can redistribute it and/or modify
-	it under the terms of the GNU General Public License, version 2, as 
+	it under the terms of the GNU General Public License, version 2, as
 	published by the Free Software Foundation.
 
 	This program is distributed in the hope that it will be useful,
@@ -41,7 +41,7 @@ define('PLL_TRS_INC', PLL_TRS_DIR . '/include');
  * Example:
  *  add_filter('pll_translated_post_type_rewrite_slugs', function($post_type_translated_slugs) {
  *  	// Add translation for "my_post_type".
- *  	$post_type_translated_slugs['my_post_type'] = array(	
+ *  	$post_type_translated_slugs['my_post_type'] = array(
  *  		'en' => 'my-english/rewrite-slug',
  *  		'fr' => 'my-french/rewrite-slug',
  *  	);
@@ -65,7 +65,7 @@ class Polylang_Translate_Rewrite_Slugs {
 
 		// If the Polylang plugin is active...
 		include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
-		if (is_plugin_active('polylang/polylang.php')) {
+		if (is_plugin_active('polylang/polylang.php') || is_readable( WPMU_PLUGIN_DIR . '/polylang/polylang.php')) {
 			add_action('init', array($this, 'init_action'), 20);
 		}
 	}
@@ -170,7 +170,7 @@ class Polylang_Translate_Rewrite_Slugs {
 		} else {
 			$lang = pll_current_language();
 		}
-		
+
 		// Check if the post type and the language is handle.
 		if (isset($this->post_types[$archive_post_type]) && isset($this->post_types[$archive_post_type]->translated_slugs[$lang])) {
 			// Build URL. Lang prefix is already handle.
