@@ -12,7 +12,7 @@ License: GPLv2 or later
 /*  Copyright 2014  Kristoffer Laurin-Racicot  (email : kristoffer.lr@gmail.com)
 
 	This program is free software; you can redistribute it and/or modify
-	it under the terms of the GNU General Public License, version 2, as 
+	it under the terms of the GNU General Public License, version 2, as
 	published by the Free Software Foundation.
 
 	This program is distributed in the hope that it will be useful,
@@ -90,7 +90,7 @@ class Polylang_Translate_Rewrite_Slugs {
 
 		// If the Polylang plugin is active...
 		include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
-		if (is_plugin_active('polylang/polylang.php')) {
+        if (is_plugin_active('polylang/polylang.php') || is_readable( WPMU_PLUGIN_DIR . '/polylang/polylang.php')) {
 			add_action('init', array($this, 'init_action'), 20);
 		}
 	}
