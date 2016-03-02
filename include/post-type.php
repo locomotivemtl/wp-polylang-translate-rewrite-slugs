@@ -143,13 +143,21 @@ class PLL_TRS_Post_Type {
 				// in the rewrite directive. Without it the archive page redirect to the frontpage if has_archive is false.
 				$permastruct_args['walk_dirs'] = false;
 
+                $permastruct_name = $post_type . '_' . $lang;
+
+                // This filter allows us to modify the permastruct before adding it
+                // Useful in the case of modifying default `post` type
+                $permastruct_route = apply_filters('pll_translated_post_type_permastruct', "%$post_type%", $post_type, $permastruct_name, $permastruct_args );
+
 				// If "Hide URL language information for default language" option is
 				// set to true the rules has to be different for the default language.
 				if ($polylang->options['hide_default'] && $lang == pll_default_language()) {
-					add_permastruct( $post_type.'_'.$lang, "{$args->rewrite['slug']}/%$post_type%", $permastruct_args );
+                    $permastruct_route = "{$args->rewrite['slug']}/{$permastruct_route}";
 				} else {
-					add_permastruct( $post_type.'_'.$lang, "%language%/{$args->rewrite['slug']}/%$post_type%", $permastruct_args );
-				}
+                    $permastruct_route = "%language%/{$args->rewrite['slug']}/{$permastruct_route}";
+                }
+
+				add_permastruct( $permastruct_name, $permastruct_route, $permastruct_args );
 			}
 		}
 	}
