@@ -373,4 +373,4 @@ class Polylang_Translate_Rewrite_Slugs {
 		return $rules;
 	}
 }
-new Polylang_Translate_Rewrite_Slugs();
+$GLOBALS['polylang_trs'] = new Polylang_Translate_Rewrite_Slugs();
