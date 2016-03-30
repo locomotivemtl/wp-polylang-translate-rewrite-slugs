@@ -26,7 +26,7 @@ class PLL_TRS_Taxonomy {
 	 * Translate the rewrite rules.
 	 */
 	public function taxonomy_rewrite_rules_filter($rewrite_rules) {
-		global $polylang, $wp_rewrite;
+		global $wp_rewrite;
 
 		$translated_rules = array();
 
@@ -34,7 +34,7 @@ class PLL_TRS_Taxonomy {
 		foreach ($this->translated_slugs as $lang => $translated_slug) {
 			// If "Hide URL language information for default language" option is
 			// set to true the rules has to be different for the default language.
-			if ($polylang->options['hide_default'] && $lang == pll_default_language()) {
+			if (PLL()->options['hide_default'] && $lang == pll_default_language()) {
 				// For each rule.
 				foreach ($rewrite_rules as $rule_key => $rule_value) {
 					// Only translate the rewrite slug.

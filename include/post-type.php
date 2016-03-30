@@ -73,7 +73,7 @@ class PLL_TRS_Post_Type {
 	 * @see Extra rules from WordPress (wp-include/post.php, register_post_type()).
 	 */
 	private function replace_extra_rules_top() {
-		global $polylang, $wp_rewrite;
+		global $wp_rewrite;
 
 		$post_type = $this->post_type_object->name;
 
@@ -125,7 +125,7 @@ class PLL_TRS_Post_Type {
 	 * @see Permstruct from WordPress (wp-include/post.php, register_post_type()).
 	 */
 	private function replace_permastruct() {
-		global $polylang, $wp_rewrite;
+		global $wp_rewrite;
 
 		$post_type = $this->post_type_object->name;
 
@@ -151,7 +151,7 @@ class PLL_TRS_Post_Type {
 
 				// If "Hide URL language information for default language" option is
 				// set to true the rules has to be different for the default language.
-				if ($polylang->options['hide_default'] && $lang == pll_default_language()) {
+				if (PLL()->options['hide_default'] && $lang == pll_default_language()) {
                     $permastruct_route = "{$args->rewrite['slug']}/{$permastruct_route}";
 				} else {
                     $permastruct_route = "%language%/{$args->rewrite['slug']}/{$permastruct_route}";
